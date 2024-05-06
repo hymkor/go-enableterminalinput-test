@@ -75,13 +75,13 @@ func mains() error {
 	}()
 
 	err = windows.SetConsoleMode(windows.Stdin,
-		( mode&^
-		enableEchoInput&^
-		enableExtendedFlag&^
-		enableInsertMode&^
-		enableLineInput&^
-		enableMouseInput&^
-		enableProcessedInput) | enableVirtualTerminalInput )
+		(mode&^
+			enableEchoInput&^
+			enableExtendedFlag&^
+			enableInsertMode&^
+			enableLineInput&^
+			enableMouseInput&^
+			enableProcessedInput)|enableVirtualTerminalInput)
 
 	if err != nil {
 		return err
