@@ -65,6 +65,7 @@ func readConsoleInput(fd uintptr, record *inputRecord) (err error) {
 }
 
 func mains() error {
+	println("Type q to quit")
 	var mode uint32
 	err := windows.GetConsoleMode(windows.Stdin, &mode)
 	if err != nil {
@@ -98,7 +99,7 @@ func mains() error {
 		case keyEvent:
 			kr := (*keyEventRecord)(unsafe.Pointer(&ir.event))
 			fmt.Printf("%+v\n", kr)
-			if kr.unicodeChar == ' ' {
+			if kr.unicodeChar == 'q' {
 				return nil
 			}
 			break
